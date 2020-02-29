@@ -1,5 +1,5 @@
 //
-//  QuestionModel.swift
+//  AnswerModel.swift
 //  wpZadanie
 //
 //  Created by Filip Harasim on 29/02/2020.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Question: Codable {
-
+struct QuizDetails: Codable {
+    
 }

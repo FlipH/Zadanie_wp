@@ -13,11 +13,13 @@ extension NetworkClient {
     enum Endpoint {
         case quizList
         case quizDetail(String)
+        case dynamic(String)
 
         var path: String {
             switch self {
-            case .quizList: return "quizzess/0/100"
+            case .quizList: return "quizzes/0/100"
             case .quizDetail(let id): return "quiz/\(id)/0"
+            case .dynamic(let url): return url
             }
         }
     }

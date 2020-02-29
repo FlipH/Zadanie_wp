@@ -15,12 +15,13 @@
 		3ED61C0E240A7D4600D05A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED61C0C240A7D4600D05A2D /* LaunchScreen.storyboard */; };
 		3ED61C19240A7D4700D05A2D /* wpZadanieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C18240A7D4700D05A2D /* wpZadanieTests.swift */; };
 		3ED61C24240A7DFD00D05A2D /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C23240A7DFD00D05A2D /* StoryboardLoadable.swift */; };
-		3ED61C29240A7EA600D05A2D /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C28240A7EA600D05A2D /* QuestionModel.swift */; };
-		3ED61C2B240A7EAF00D05A2D /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C2A240A7EAF00D05A2D /* AnswerModel.swift */; };
+		3ED61C29240A7EA600D05A2D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C28240A7EA600D05A2D /* Question.swift */; };
+		3ED61C2B240A7EAF00D05A2D /* QuizDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C2A240A7EAF00D05A2D /* QuizDetails.swift */; };
 		3ED61C2D240A7EBB00D05A2D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C2C240A7EBB00D05A2D /* Parser.swift */; };
 		3ED61C2F240A7EFB00D05A2D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C2E240A7EFB00D05A2D /* NetworkClient.swift */; };
 		3ED61C31240A7F0A00D05A2D /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C30240A7F0A00D05A2D /* DataProvider.swift */; };
 		3ED61C33240A7F1F00D05A2D /* NetworkClient+Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C32240A7F1F00D05A2D /* NetworkClient+Endpoints.swift */; };
+		3ED61C35240A918A00D05A2D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED61C34240A918A00D05A2D /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,12 +47,13 @@
 		3ED61C18240A7D4700D05A2D /* wpZadanieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wpZadanieTests.swift; sourceTree = "<group>"; };
 		3ED61C1A240A7D4700D05A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ED61C23240A7DFD00D05A2D /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
-		3ED61C28240A7EA600D05A2D /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		3ED61C2A240A7EAF00D05A2D /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
+		3ED61C28240A7EA600D05A2D /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		3ED61C2A240A7EAF00D05A2D /* QuizDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDetails.swift; sourceTree = "<group>"; };
 		3ED61C2C240A7EBB00D05A2D /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		3ED61C2E240A7EFB00D05A2D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		3ED61C30240A7F0A00D05A2D /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		3ED61C32240A7F1F00D05A2D /* NetworkClient+Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkClient+Endpoints.swift"; sourceTree = "<group>"; };
+		3ED61C34240A918A00D05A2D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,6 @@
 		3ED61C00240A7D3F00D05A2D /* wpZadanie */ = {
 			isa = PBXGroup;
 			children = (
-				3ED61C03240A7D3F00D05A2D /* SceneDelegate.swift */,
 				3ED61C05240A7D3F00D05A2D /* ViewController.swift */,
 				3ED61C07240A7D3F00D05A2D /* Main.storyboard */,
 				3ED61C0A240A7D4600D05A2D /* Assets.xcassets */,
@@ -119,8 +120,10 @@
 				3ED61C27240A7E9300D05A2D /* Model */,
 				3ED61C26240A7E6E00D05A2D /* Networking */,
 				3ED61C01240A7D3F00D05A2D /* AppDelegate.swift */,
+				3ED61C03240A7D3F00D05A2D /* SceneDelegate.swift */,
 				3ED61C23240A7DFD00D05A2D /* StoryboardLoadable.swift */,
 				3ED61C2C240A7EBB00D05A2D /* Parser.swift */,
+				3ED61C34240A918A00D05A2D /* ImageCache.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -138,8 +141,8 @@
 		3ED61C27240A7E9300D05A2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3ED61C28240A7EA600D05A2D /* QuestionModel.swift */,
-				3ED61C2A240A7EAF00D05A2D /* AnswerModel.swift */,
+				3ED61C28240A7EA600D05A2D /* Question.swift */,
+				3ED61C2A240A7EAF00D05A2D /* QuizDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,13 +248,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ED61C35240A918A00D05A2D /* ImageCache.swift in Sources */,
 				3ED61C06240A7D3F00D05A2D /* ViewController.swift in Sources */,
 				3ED61C02240A7D3F00D05A2D /* AppDelegate.swift in Sources */,
 				3ED61C24240A7DFD00D05A2D /* StoryboardLoadable.swift in Sources */,
-				3ED61C2B240A7EAF00D05A2D /* AnswerModel.swift in Sources */,
+				3ED61C2B240A7EAF00D05A2D /* QuizDetails.swift in Sources */,
 				3ED61C33240A7F1F00D05A2D /* NetworkClient+Endpoints.swift in Sources */,
 				3ED61C04240A7D3F00D05A2D /* SceneDelegate.swift in Sources */,
-				3ED61C29240A7EA600D05A2D /* QuestionModel.swift in Sources */,
+				3ED61C29240A7EA600D05A2D /* Question.swift in Sources */,
 				3ED61C31240A7F0A00D05A2D /* DataProvider.swift in Sources */,
 				3ED61C2D240A7EBB00D05A2D /* Parser.swift in Sources */,
 				3ED61C2F240A7EFB00D05A2D /* NetworkClient.swift in Sources */,
@@ -417,6 +421,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZUH8T552C;
 				INFOPLIST_FILE = wpZadanie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZUH8T552C;
 				INFOPLIST_FILE = wpZadanie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
