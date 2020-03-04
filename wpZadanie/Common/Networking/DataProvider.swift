@@ -10,9 +10,9 @@ import UIKit
 
 protocol DataProviderProtocol {
     var networkClient: NetworkClientProtocol { get }
-    func downloadQuizzes(completion: @escaping(Result<QuizModel, Error>) -> Void)
-    func downloadDetailForQuiz(with id: String, completion: @escaping (Result<QuizDetails, Error>) -> Void)
-    func downloadPhoto(urlString: String, completion: @escaping(Result<UIImage, Error>) -> Void)
+    func downloadQuizzes(completion: @escaping(Result<[Quiz], Error>) -> Void)
+    func downloadDetailForQuiz(with id: Int, completion: @escaping (Result<QuizDetails, Error>) -> Void)
+    func downloadPhoto(for url: URL, completion: @escaping(Result<UIImage, Error>) -> Void)
 }
 
 class DataProvider: DataProviderProtocol {
@@ -24,7 +24,7 @@ class DataProvider: DataProviderProtocol {
         self.networkClient = client
     }
 
-    func downloadQuizzes(completion: @escaping (Result<QuizModel, Error>) -> Void) {
+    func downloadQuizzes(completion: @escaping (Result<[Quiz], Error>) -> Void) {
         networkClient.downloadData(for: .quizList) { (result) in
             switch result {
             case .failure(let err):
@@ -34,13 +34,13 @@ class DataProvider: DataProviderProtocol {
                     completion(.failure(NetworkError.decodingFailure))
                     return
                 }
-                completion(.success(parsedData))
+                completion(.success(parsedData.quizess))
             }
         }
     }
 
     //TODO: posibility for improvement- code duplication
-    func downloadDetailForQuiz(with id: String, completion: @escaping (Result<QuizDetails, Error>) -> Void) {
+    func downloadDetailForQuiz(with id: Int, completion: @escaping (Result<QuizDetails, Error>) -> Void) {
         networkClient.downloadData(for: .quizDetail(id)) { (result) in
             switch result {
             case .failure(let err):
@@ -55,8 +55,8 @@ class DataProvider: DataProviderProtocol {
         }
     }
 
-    func downloadPhoto(urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        networkClient.downloadData(for: .dynamic(urlString)) { result in
+    func downloadPhoto(for url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        networkClient.downloadPhoto(for: url) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
@@ -66,7 +66,7 @@ class DataProvider: DataProviderProtocol {
                         completion(.failure(NetworkError.missingData))
                         return
                     }
-                    self.imageCache.setObject(object: image, for: urlString)
+                    self.imageCache.setObject(object: image, for: url.absoluteString)
                     completion(.success(image))
                 }
             }

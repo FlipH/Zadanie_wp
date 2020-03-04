@@ -12,14 +12,12 @@ import Foundation
 extension NetworkClient {
     enum Endpoint {
         case quizList
-        case quizDetail(String)
-        case dynamic(String)
+        case quizDetail(Int)
 
         var path: String {
             switch self {
             case .quizList: return "quizzes/0/100"
             case .quizDetail(let id): return "quiz/\(id)/0"
-            case .dynamic(let url): return url
             }
         }
     }

@@ -18,10 +18,13 @@ enum NetworkError: Error {
 
 protocol NetworkClientProtocol {
     @discardableResult func downloadData(for endpoint: NetworkClient.Endpoint, completion: @escaping(Result<Data, Error>) -> Void) -> URLSessionDataTask?
+    @discardableResult func downloadPhoto(for url: URL, completion: @escaping(Result<Data, Error>) -> Void) -> URLSessionDataTask?
 }
 
 
 class NetworkClient: NetworkClientProtocol {
+
+
     static let baseUrl = "http://quiz.o2.pl/api/v1/"
 
     var session: URLSession {
@@ -49,6 +52,24 @@ class NetworkClient: NetworkClientProtocol {
         task.resume()
         return task
     }
+
+    func downloadPhoto(for url: URL, completion: @escaping (Result<Data, Error>) -> Void) -> URLSessionDataTask? {
+        let task = session.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                guard let data = data else {
+                    let error = NetworkError.missingData
+                    completion(.failure(error))
+                    return
+                }
+                completion(.success(data))
+            }
+            task.resume()
+            return task
+        }
+
 
     private func createRequest(forEndpoint endpoint: Endpoint) -> URLRequest? {
         guard let url = URL.create(NetworkClient.baseUrl, path: endpoint.path) else {

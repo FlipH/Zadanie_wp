@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Quiz List View Controller-->
+        <scene sceneID="L7D-RD-Qga">
+            <objects>
+                <viewController id="t62-wz-6bI" customClass="QuizListViewController" customModule="wpZadanie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MxT-sf-2iH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3tZ-0g-nmo">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="quizListReuseIdentifier" id="KlC-tJ-ZuR" customClass="QuizListTableViewCell" customModule="wpZadanie" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="237"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KlC-tJ-ZuR" id="q0k-w2-bXZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="237"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMA-Z4-HDM">
+                                                    <rect key="frame" x="28" y="19" width="105.5" height="26.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CategoryName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZW-Cw-gkZ">
+                                                    <rect key="frame" x="28" y="53.5" width="109.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-24-jbN">
+                                                    <rect key="frame" x="0.0" y="81" width="414" height="155.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="7C8-24-jbN" secondAttribute="height" multiplier="16:6" id="Uqq-07-ywp"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hMA-Z4-HDM" secondAttribute="trailing" constant="8" id="8wK-zS-OWn"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="UZW-Cw-gkZ" secondAttribute="trailing" constant="8" id="W50-C7-WDH"/>
+                                                <constraint firstAttribute="trailing" secondItem="7C8-24-jbN" secondAttribute="trailing" id="Wge-Sw-jtu"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7C8-24-jbN" secondAttribute="bottom" id="c7y-cX-KRw"/>
+                                                <constraint firstItem="hMA-Z4-HDM" firstAttribute="top" secondItem="q0k-w2-bXZ" secondAttribute="topMargin" constant="8" id="jcX-hd-T8E"/>
+                                                <constraint firstItem="7C8-24-jbN" firstAttribute="leading" secondItem="q0k-w2-bXZ" secondAttribute="leading" id="kKo-i2-MMg"/>
+                                                <constraint firstItem="UZW-Cw-gkZ" firstAttribute="top" secondItem="hMA-Z4-HDM" secondAttribute="bottom" constant="8" id="lgt-LE-rJp"/>
+                                                <constraint firstItem="7C8-24-jbN" firstAttribute="top" secondItem="UZW-Cw-gkZ" secondAttribute="bottom" constant="8" id="pes-JP-82w"/>
+                                                <constraint firstItem="UZW-Cw-gkZ" firstAttribute="leading" secondItem="q0k-w2-bXZ" secondAttribute="leadingMargin" constant="8" id="qF0-vu-goe"/>
+                                                <constraint firstItem="hMA-Z4-HDM" firstAttribute="leading" secondItem="q0k-w2-bXZ" secondAttribute="leadingMargin" constant="8" id="yIa-Fa-jr9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryName" destination="UZW-Cw-gkZ" id="Ohp-4N-NNl"/>
+                                            <outlet property="imageV" destination="7C8-24-jbN" id="6rf-k0-xbE"/>
+                                            <outlet property="quizName" destination="hMA-Z4-HDM" id="pyE-iC-o3V"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3tZ-0g-nmo" firstAttribute="top" secondItem="idW-SO-Qo0" secondAttribute="top" id="1P1-jS-0Uz"/>
+                            <constraint firstItem="idW-SO-Qo0" firstAttribute="trailing" secondItem="3tZ-0g-nmo" secondAttribute="trailing" id="Fhf-MB-bOt"/>
+                            <constraint firstItem="3tZ-0g-nmo" firstAttribute="leading" secondItem="idW-SO-Qo0" secondAttribute="leading" id="gSD-IV-DvE"/>
+                            <constraint firstItem="idW-SO-Qo0" firstAttribute="bottom" secondItem="3tZ-0g-nmo" secondAttribute="bottom" id="sgV-7f-Pqm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="idW-SO-Qo0"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="3tZ-0g-nmo" id="m9V-6c-Mxr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VqC-FC-pHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-166.66666666666669" y="15.401785714285714"/>
+        </scene>
+    </scenes>
+</document>
