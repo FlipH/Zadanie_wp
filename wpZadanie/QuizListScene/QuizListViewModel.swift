@@ -32,15 +32,13 @@ class QuizListViewModel: QuizListViewModelProtocol {
         return items.count
     }
 
-
-
     func loadAndStoreQuestions(completion: @escaping () -> Void) {
         dataProvider.downloadQuizzes { (result) in
             switch result {
             case .success(let data):
                 self.items = data
                 completion()
-            case .failure(let error): break
+            case .failure(_): break
             }
         }
     }
@@ -55,13 +53,10 @@ class QuizListViewModel: QuizListViewModelProtocol {
             case .success(let image):
                 completion(image)
                 break
-            case .failure(let err):
+            case .failure(_):
                 completion(nil)
                 break
             }
         }
     }
-
-
-
 }

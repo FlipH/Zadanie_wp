@@ -70,7 +70,6 @@ class NetworkClient: NetworkClientProtocol {
             return task
         }
 
-
     private func createRequest(forEndpoint endpoint: Endpoint) -> URLRequest? {
         guard let url = URL.create(NetworkClient.baseUrl, path: endpoint.path) else {
             return nil

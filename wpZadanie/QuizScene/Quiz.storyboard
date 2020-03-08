@@ -11,52 +11,102 @@
         <!--Quiz View Controller-->
         <scene sceneID="qGv-Nl-itc">
             <objects>
-                <viewController id="xha-ne-KPL" customClass="QuizViewController" customModule="wpZadanie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuizViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xha-ne-KPL" customClass="QuizViewController" customModule="wpZadanie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F6t-9X-jN2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wv1-xS-hf5">
-                                <rect key="frame" x="0.0" y="162.5" width="414" height="683.5"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wv1-xS-hf5">
+                                <rect key="frame" x="0.0" y="119.5" width="414" height="682.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5U1-OF-cT8">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5U1-OF-cT8">
                                     <size key="itemSize" width="336" height="658"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xha-ne-KPL" id="YuV-t6-Zzb"/>
+                                    <outlet property="delegate" destination="xha-ne-KPL" id="K9n-pY-UvM"/>
+                                </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-El-0tr">
-                                <rect key="frame" x="32" y="80.5" width="350" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-El-0tr" customClass="ProgressView" customModule="wpZadanie" customModuleProvider="target">
+                                <rect key="frame" x="32" y="96.5" width="350" height="14"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0Iq-bc-8pv"/>
+                                    <constraint firstAttribute="height" constant="14" id="0Iq-bc-8pv"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdZ-IJ-Eke">
-                                <rect key="frame" x="32" y="44" width="350" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdZ-IJ-Eke">
+                                <rect key="frame" x="32" y="60" width="350" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdN-9x-DDd" userLabel="separator">
+                                <rect key="frame" x="0.0" y="118.5" width="414" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="x67-3V-KoV"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYk-Ne-ZFS">
+                                <rect key="frame" x="16" y="818" width="382" height="44"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nHX-UU-5pc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Dalej">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueQuiz:" destination="xha-ne-KPL" eventType="touchUpInside" id="HmB-5w-Oy1"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-fj-KXX" userLabel="activityView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="buw-2e-Hpe">
+                                        <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                        <color key="color" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="buw-2e-Hpe" firstAttribute="centerY" secondItem="o8D-fj-KXX" secondAttribute="centerY" id="1vj-vy-zmf"/>
+                                    <constraint firstItem="buw-2e-Hpe" firstAttribute="centerX" secondItem="o8D-fj-KXX" secondAttribute="centerX" id="aw5-He-vXV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7zO-za-UQB" firstAttribute="trailing" secondItem="VdZ-IJ-Eke" secondAttribute="trailing" constant="32" id="1Px-ES-jdx"/>
                             <constraint firstItem="7zO-za-UQB" firstAttribute="trailing" secondItem="wv1-xS-hf5" secondAttribute="trailing" id="3fR-oB-e3O"/>
+                            <constraint firstItem="lYk-Ne-ZFS" firstAttribute="top" secondItem="wv1-xS-hf5" secondAttribute="bottom" constant="16" id="4dl-e4-UAZ"/>
+                            <constraint firstItem="7zO-za-UQB" firstAttribute="trailing" secondItem="lYk-Ne-ZFS" secondAttribute="trailing" constant="16" id="BkT-bc-q0V"/>
+                            <constraint firstItem="lYk-Ne-ZFS" firstAttribute="leading" secondItem="7zO-za-UQB" secondAttribute="leading" constant="16" id="ExM-0r-XZ9"/>
+                            <constraint firstItem="EdN-9x-DDd" firstAttribute="bottom" secondItem="wv1-xS-hf5" secondAttribute="top" id="OhT-o3-rRI"/>
+                            <constraint firstItem="o8D-fj-KXX" firstAttribute="trailing" secondItem="7zO-za-UQB" secondAttribute="trailing" id="S3d-2Z-TCl"/>
                             <constraint firstItem="wv1-xS-hf5" firstAttribute="leading" secondItem="7zO-za-UQB" secondAttribute="leading" id="Uhl-Ie-ONF"/>
                             <constraint firstItem="7sC-El-0tr" firstAttribute="leading" secondItem="7zO-za-UQB" secondAttribute="leading" constant="32" id="Vqv-5c-FMQ"/>
+                            <constraint firstItem="EdN-9x-DDd" firstAttribute="top" secondItem="7sC-El-0tr" secondAttribute="bottom" constant="8" id="WVb-bU-UTo"/>
                             <constraint firstItem="7zO-za-UQB" firstAttribute="trailing" secondItem="7sC-El-0tr" secondAttribute="trailing" constant="32" id="X1n-Y6-ceQ"/>
-                            <constraint firstItem="wv1-xS-hf5" firstAttribute="top" secondItem="7sC-El-0tr" secondAttribute="bottom" constant="32" id="lux-iN-ib7"/>
+                            <constraint firstItem="7zO-za-UQB" firstAttribute="trailing" secondItem="EdN-9x-DDd" secondAttribute="trailing" id="Xg4-lg-qSs"/>
+                            <constraint firstItem="7zO-za-UQB" firstAttribute="bottom" secondItem="lYk-Ne-ZFS" secondAttribute="bottom" id="Yt2-BZ-kMt"/>
+                            <constraint firstAttribute="bottom" secondItem="o8D-fj-KXX" secondAttribute="bottom" id="eYv-cg-2oC"/>
                             <constraint firstItem="VdZ-IJ-Eke" firstAttribute="leading" secondItem="7zO-za-UQB" secondAttribute="leading" constant="32" id="rAC-K8-Dg9"/>
-                            <constraint firstItem="7zO-za-UQB" firstAttribute="bottom" secondItem="wv1-xS-hf5" secondAttribute="bottom" constant="16" id="tZp-9x-vO9"/>
-                            <constraint firstItem="VdZ-IJ-Eke" firstAttribute="top" secondItem="7zO-za-UQB" secondAttribute="top" id="u8K-yE-xnS"/>
+                            <constraint firstItem="VdZ-IJ-Eke" firstAttribute="top" secondItem="7zO-za-UQB" secondAttribute="top" constant="16" id="u8K-yE-xnS"/>
+                            <constraint firstItem="o8D-fj-KXX" firstAttribute="leading" secondItem="7zO-za-UQB" secondAttribute="leading" id="ud3-Xe-hdg"/>
                             <constraint firstItem="7sC-El-0tr" firstAttribute="top" secondItem="VdZ-IJ-Eke" secondAttribute="bottom" constant="16" id="voQ-oR-X8v"/>
+                            <constraint firstItem="EdN-9x-DDd" firstAttribute="leading" secondItem="7zO-za-UQB" secondAttribute="leading" id="xiv-sm-7Cl"/>
+                            <constraint firstItem="o8D-fj-KXX" firstAttribute="top" secondItem="F6t-9X-jN2" secondAttribute="top" id="xnw-RK-8Ax"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7zO-za-UQB"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="o8D-fj-KXX" id="RXE-NV-6LM"/>
                         <outlet property="collectionView" destination="wv1-xS-hf5" id="36n-tp-iBo"/>
                         <outlet property="progressView" destination="7sC-El-0tr" id="cta-6b-Ue8"/>
                         <outlet property="titleLabel" destination="VdZ-IJ-Eke" id="xbm-TD-1fc"/>

@@ -11,6 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let networkClient = NetworkClient()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -21,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let vc = QuizListViewController.instantiate() else {
             fatalError()
         }
+        let dataProvider = DataProvider(client: networkClient)
+        vc.viewModel = QuizListViewModel(dataProvider: dataProvider)
         window.rootViewController = UINavigationController(rootViewController: vc)
         window.makeKeyAndVisible()
 

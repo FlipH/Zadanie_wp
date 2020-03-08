@@ -12,8 +12,14 @@ class QuizListTableViewCell: UITableViewCell {
 
 static let reuseIdentifier = "QuizListTableViewCellReuseIdentifier"
 
+    @IBOutlet weak var imageActivityIndicatorView: UIView!
     @IBOutlet weak var quizName: UILabel!
     @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var imageV: UIImageView!
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageV.image = nil
+    }
     
 }

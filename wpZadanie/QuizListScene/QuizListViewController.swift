@@ -10,24 +10,28 @@ import UIKit
 
 class QuizListViewController: UIViewController {
 
-
-
     var viewModel: QuizListViewModelProtocol!
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(QuizListTableViewCell.self, forCellReuseIdentifier: QuizListTableViewCell.reuseIdentifier)
-        
-    }
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        activityIndicatorView.isHidden = false
 
+        viewModel.loadAndStoreQuestions {
+            DispatchQueue.main.async {
+                self.activityIndicatorView.isHidden = true
+                self.tableView.reloadData()
+            }
+        }
+    }
 
 }
 
 extension QuizListViewController: UITableViewDelegate, UITableViewDataSource {
-
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.itemsCount
@@ -37,10 +41,27 @@ extension QuizListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: QuizListTableViewCell.reuseIdentifier) as? QuizListTableViewCell else {
             return UITableViewCell()
         }
+        cell.imageActivityIndicatorView.isHidden = false
+        viewModel.loadAndStorePhoto(for: indexPath) { (image) in
+            cell.imageActivityIndicatorView.isHidden = true
+            cell.imageV.image = image
+        }
+
         cell.quizName?.text = viewModel.itemAt(indexPath: indexPath).title
-        cell.categoryName?.text = viewModel.itemAt(indexPath: indexPath).category.name
+        cell.categoryName?.text = "Kategoria: \(viewModel.itemAt(indexPath: indexPath).category.name)"
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = QuizViewController.instantiate() else {
+            return
+        }
+        let id = viewModel.itemAt(indexPath: indexPath).id
+        let dataProv = DataProvider(client: NetworkClient())
+        vc.viewModel = QuizViewModel(id: id, dataProvider: dataProv)
+
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

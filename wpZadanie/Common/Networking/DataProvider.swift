@@ -56,6 +56,11 @@ class DataProvider: DataProviderProtocol {
     }
 
     func downloadPhoto(for url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        if let image = self.imageCache.getObject(with: url.absoluteString) {
+            completion(.success(image))
+            return
+        }
+
         networkClient.downloadPhoto(for: url) { result in
             DispatchQueue.main.async {
                 switch result {
